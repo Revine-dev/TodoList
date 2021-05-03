@@ -1,1 +1,248 @@
 /* Other rules */
+
+:root {
+  --darkblue: #4937c2;
+  --blue: #7a6adb;
+  --lightblue: #b7aeeb;
+  --skyblue: #f2f7fd;
+}
+
+@import url(//fonts.googleapis.com/css?family=Lato:300:800);
+
+body {
+  font-family: Lato, sans-serif;
+  color: black;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1048px;
+  margin: auto;
+}
+
+header {
+  background: var(--blue);
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+header::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background: white;
+  width: 100%;
+  height: 20px;
+  transform: rotate(-0.76deg);
+}
+
+header + * {
+  margin-top: 40px !important;
+}
+
+main {
+  position: relative;
+}
+
+.switchdarkmode {
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+label[for="switchdarkmodeBtn"] {
+  cursor: pointer;
+}
+input.apple-switch {
+  position: relative;
+  margin-right: 5px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  outline: none;
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #d9dadc;
+  border-radius: 50px;
+  box-shadow: inset -20px 0 0 0 #fff;
+}
+
+input.apple-switch:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: transparent;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+input.apple-switch:checked {
+  box-shadow: inset 20px 0 0 0 #4ed164;
+  border-color: #4ed164;
+}
+
+input.apple-switch:checked:after {
+  left: 20px;
+  box-shadow: -2px 4px 3px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 34px;
+  text-align: center;
+}
+
+form.task {
+  width: 600px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  padding-top: 50px !important;
+}
+
+input[name="create-task"] {
+  border: 1px solid var(--lightblue);
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 15px;
+  background: var(--skyblue);
+  width: 400px;
+}
+
+input[name="create-task"]::placeholder {
+  color: lightgray;
+}
+
+input[type="submit"],
+button[type="submit"] {
+  border-radius: 5px;
+  background: var(--blue);
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  width: 100px;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover {
+  background: var(--darkblue);
+}
+
+section.tasks {
+  border-radius: 5px;
+  border: 1px solid var(--lightblue);
+  -webkit-box-shadow: 5px 6px 7px 1px lightgray;
+  -moz-box-shadow: 5px 6px 7px 1px lightgray;
+  box-shadow: 1px 1px 2px 1px lightgray;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tasks .task {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 20px;
+  border-radius: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tasks .task {
+  border-bottom: 1px solid var(--lightblue);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tasks .task:nth-child(even) {
+  background: transparent;
+}
+
+.tasks .task .close {
+  opacity: 0.5;
+  font-weight: 600;
+  text-align: right;
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tasks .task .close:hover {
+  color: black;
+}
+
+.tasks .task.done {
+  order: 1;
+}
+
+.tasks .task.done .name {
+  text-decoration: line-through;
+}
+
+.tasks .task.done .close {
+  opacity: 0;
+}
+
+footer {
+  margin-top: 30px;
+  padding: 10px;
+  text-align: center;
+  color: var(--blue);
+}
+
+footer a {
+  font-weight: bold;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+body.darkmode {
+  background: black;
+  color: white !important;
+}
+.darkmode header::after {
+  background: black;
+}
+.darkmode header::after {
+  background: black;
+}
+.darkmode input[name="create-task"],
+.darkmode button {
+  background: black;
+  color: white;
+}
+.darkmode section.tasks {
+  box-shadow: none;
+}
+.darkmode .tasks .task .close:hover {
+  color: white;
+}
