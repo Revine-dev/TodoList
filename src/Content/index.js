@@ -19,7 +19,6 @@ const Content = () => {
 
   const [data, setData] = useState(tasks);
   const [newTask, setNewTask] = useState();
-  const [darkMode, setdarkMode] = useState(false);
 
   const createNewTask = (e) => {
     e.preventDefault();
@@ -54,7 +53,7 @@ const Content = () => {
 
   return (
     <main className="container">
-      <DarkModeTemplate darkMode={darkMode} setdarkMode={setdarkMode} />
+      <DarkModeTemplate />
       <form className="task" onSubmit={createNewTask}>
         <input
           type="text"

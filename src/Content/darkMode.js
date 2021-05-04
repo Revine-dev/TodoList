@@ -1,7 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const DarkModeTemplate = (props) => {
-  function isDarkModeEnabled() {
+const DarkModeTemplate = () => {
+  const [darkMode, setdarkMode] = useState(false);
+  const darkModeSwitcher = useRef();
+
+  function isDarkBrowserModeEnabled() {
     return (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -9,12 +12,13 @@ const DarkModeTemplate = (props) => {
   }
 
   useEffect(() => {
-    if (isDarkModeEnabled()) {
-      props.setdarkMode(true);
+    if (!document.body.className && isDarkBrowserModeEnabled()) {
+      setdarkMode(true);
+      darkModeSwitcher.current.click();
     }
   }, []);
 
-  if (props.darkMode) {
+  if (darkMode) {
     document.body.className = "darkmode";
   } else {
     document.body.className = "";
@@ -24,16 +28,15 @@ const DarkModeTemplate = (props) => {
     <div className="switchdarkmode">
       <input
         type="checkbox"
-        name=""
+        ref={darkModeSwitcher}
+        name="darkmode"
         onClick={() => {
-          !props.darkMode ? props.setdarkMode(true) : props.setdarkMode(false);
+          !darkMode ? setdarkMode(true) : setdarkMode(false);
         }}
         className="apple-switch"
         id="switchdarkmodeBtn"
       />
-      <label htmlFor="switchdarkmodeBtn">
-        {!props.darkMode ? "Dark Mode" : "Light mode"}
-      </label>
+      <label htmlFor="switchdarkmodeBtn">Dark Mode</label>
     </div>
   );
 };

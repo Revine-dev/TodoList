@@ -246,3 +246,27 @@ body.darkmode {
 .darkmode .tasks .task .close:hover {
   color: white;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  form.task {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  input[name="create-task"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    align-self: center;
+  }
+}
